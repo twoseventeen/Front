@@ -15,39 +15,53 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+// --------------------입력 칸--------------------------
 const Register = () => {
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
-      email: '',
-      firstName: '',
-      lastName: '',
-      password: '',
-      policy: false
+      id: '',
+      nickname: '',
+      passwrod: '',
+      password2: '',
+      name: '',
+      email: ''
+      // policy: false
     },
     validationSchema: Yup.object({
-      email: Yup
-        .string()
-        .email(
-          'Must be a valid email')
-        .max(255)
-        .required(
-          'Email is required'),
-      firstName: Yup
+      id: Yup
         .string()
         .max(255)
         .required(
-          'First name is required'),
-      lastName: Yup
+          '아이디를 입력해주세요.'),
+      nickname: Yup
         .string()
         .max(255)
         .required(
-          'Last name is required'),
+          '사용할 닉네임을 입력해주세요'),
       password: Yup
         .string()
         .max(255)
         .required(
-          'Password is required'),
+          '비밀번호를 입력해주세요'),
+      password2: Yup
+        .string()
+        .max(255)
+        .oneOf([Yup.ref('password'), null], '비밀번호가 일치하지않습니다.')
+        .required(
+          '비밀번호를 재입력해주세요.'),
+      name: Yup
+        .string()
+        .max(255)
+        .required(
+          '이름을 입력해주세요.'),
+      email: Yup
+        .string()
+        .max(255)
+        .email('올바른 이메일 형식을 입력해주세요.')
+        .required(
+          '이메일을 입력해주세요.'),
+
       policy: Yup
         .boolean()
         .oneOf(
@@ -85,67 +99,64 @@ const Register = () => {
               component="a"
               startIcon={<ArrowBackIcon fontSize="small" />}
             >
-              Dashboard
+              메인화면으로
             </Button>
           </NextLink>
           <form onSubmit={formik.handleSubmit}>
-            <Box sx={{ my: 3 }}>
+
+
+            {/* -------------상단 '회원가입'----------------- */}
+            <Box sx={{
+              my: 1,
+              marginTop: 0.5,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}>
               <Typography
                 color="textPrimary"
                 variant="h4"
               >
-                Create a new account
+                회원가입
               </Typography>
               <Typography
                 color="textSecondary"
                 gutterBottom
                 variant="body2"
               >
-                Use your email to create a new account
               </Typography>
             </Box>
+
+            {/* ----------------입력박스에 값이 없을 때 에러표시------------------ */}
             <TextField
-              error={Boolean(formik.touched.firstName && formik.errors.firstName)}
+              error={Boolean(formik.touched.id && formik.errors.id)}
               fullWidth
-              helperText={formik.touched.firstName && formik.errors.firstName}
-              label="First Name"
+              helperText={formik.touched.id && formik.errors.id}
+              label="아이디"
               margin="normal"
-              name="firstName"
+              name="id"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.firstName}
+              value={formik.values.id}
               variant="outlined"
             />
             <TextField
-              error={Boolean(formik.touched.lastName && formik.errors.lastName)}
+              error={Boolean(formik.touched.nickname && formik.errors.nickname)}
               fullWidth
-              helperText={formik.touched.lastName && formik.errors.lastName}
-              label="Last Name"
+              helperText={formik.touched.nickname && formik.errors.nickname}
+              label="닉네임"
               margin="normal"
-              name="lastName"
+              name="nickname"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.lastName}
-              variant="outlined"
-            />
-            <TextField
-              error={Boolean(formik.touched.email && formik.errors.email)}
-              fullWidth
-              helperText={formik.touched.email && formik.errors.email}
-              label="Email Address"
-              margin="normal"
-              name="email"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              type="email"
-              value={formik.values.email}
+              value={formik.values.nickname}
               variant="outlined"
             />
             <TextField
               error={Boolean(formik.touched.password && formik.errors.password)}
               fullWidth
               helperText={formik.touched.password && formik.errors.password}
-              label="Password"
+              label="비밀번호"
               margin="normal"
               name="password"
               onBlur={formik.handleBlur}
@@ -154,8 +165,49 @@ const Register = () => {
               value={formik.values.password}
               variant="outlined"
             />
+            <TextField
+              error={Boolean(formik.touched.password2 && formik.errors.password2)}
+              fullWidth
+              helperText={formik.touched.password2 && formik.errors.password2}
+              label="비밀번호 확인"
+              margin="normal"
+              name="password2"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="password"
+              value={formik.values.password2}
+              variant="outlined"
+            />
+            <TextField
+              error={Boolean(formik.touched.name && formik.errors.name)}
+              fullWidth
+              helperText={formik.touched.name && formik.errors.name}
+              label="이름"
+              margin="normal"
+              name="name"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.name}
+              variant="outlined"
+            />
+            <TextField
+              error={Boolean(formik.touched.email && formik.errors.email)}
+              fullWidth
+              helperText={formik.touched.email && formik.errors.email}
+              label="이메일"
+              margin="normal"
+              name="email"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="pattern"
+              value={formik.values.email}
+              variant="outlined"
+            />
+
+            {/* ------------------약관---------------------- */}
             <Box
               sx={{
+                py: 1,
                 alignItems: 'center',
                 display: 'flex',
                 ml: -1
@@ -170,10 +222,10 @@ const Register = () => {
                 color="textSecondary"
                 variant="body2"
               >
-                I have read the
+                이용약관에 동의합니다.
                 {' '}
                 <NextLink
-                  href="#"
+                  href=""
                   passHref
                 >
                   <Link
@@ -181,7 +233,7 @@ const Register = () => {
                     underline="always"
                     variant="subtitle2"
                   >
-                    Terms and Conditions
+                    약관보기
                   </Link>
                 </NextLink>
               </Typography>
@@ -191,7 +243,9 @@ const Register = () => {
                 {formik.errors.policy}
               </FormHelperText>
             )}
-            <Box sx={{ py: 2 }}>
+
+            {/* ----------------회원가입 버튼--------------- */}
+            <Box sx={{ py: 3 }}>
               <Button
                 color="primary"
                 disabled={formik.isSubmitting}
@@ -200,14 +254,16 @@ const Register = () => {
                 type="submit"
                 variant="contained"
               >
-                Sign Up Now
+                가입하기
               </Button>
             </Box>
+
+            {/* --------로그인 화면으로 돌아가기---------- */}
             <Typography
               color="textSecondary"
               variant="body2"
             >
-              Have an account?
+              계정이 있으신가요?
               {' '}
               <NextLink
                 href="/login"
@@ -217,7 +273,7 @@ const Register = () => {
                   variant="subtitle2"
                   underline="hover"
                 >
-                  Sign In
+                  로그인화면으로 가기
                 </Link>
               </NextLink>
             </Typography>
@@ -229,3 +285,4 @@ const Register = () => {
 };
 
 export default Register;
+

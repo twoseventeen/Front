@@ -7,9 +7,13 @@ import { Bell as BellIcon } from '../icons/bell';
 import { UserCircle as UserCircleIcon } from '../icons/user-circle';
 import { Users as UsersIcon } from '../icons/users';
 
+
+
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  boxShadow: theme.shadows[3]
+  backgroundColor: "Black",
+  // theme.palette.background.paper
+  boxShadow: theme.shadows[3],
+  height: 80
 }));
 
 export const DashboardNavbar = (props) => {
@@ -18,14 +22,7 @@ export const DashboardNavbar = (props) => {
   return (
     <>
       <DashboardNavbarRoot
-        sx={{
-          left: {
-            lg: 280
-          },
-          width: {
-            lg: 'calc(100% - 280px)'
-          }
-        }}
+        sx={{ left: { lg: 280 }, width: { lg: 'calc(100% - 280px)' } }}
         {...other}>
         <Toolbar
           disableGutters
@@ -44,27 +41,33 @@ export const DashboardNavbar = (props) => {
               }
             }}
           >
-            <MenuIcon fontSize="small" />
+            <MenuIcon fontSize="Large" />
           </IconButton>
           <Tooltip title="Search">
-            <IconButton sx={{ ml: 1 }}>
-              <SearchIcon fontSize="small" />
+            <IconButton sx={{ ml: 1, mt: 2 }}>
+              <SearchIcon fontSize="Large" />
             </IconButton>
           </Tooltip>
           <Box sx={{ flexGrow: 1 }} />
           <Tooltip title="Contacts">
-            <IconButton sx={{ ml: 1 }}>
-              <UsersIcon fontSize="small" />
+            <IconButton sx={{
+              ml: 1,
+              mt: 2
+            }}>
+              <UsersIcon fontSize="Large" />
             </IconButton>
           </Tooltip>
           <Tooltip title="Notifications">
-            <IconButton sx={{ ml: 1 }}>
+            <IconButton sx={{
+              ml: 1,
+              mt: 2
+            }}>
               <Badge
                 badgeContent={4}
                 color="primary"
                 variant="dot"
               >
-                <BellIcon fontSize="small" />
+                <BellIcon fontSize="Large" />
               </Badge>
             </IconButton>
           </Tooltip>
@@ -72,11 +75,12 @@ export const DashboardNavbar = (props) => {
             sx={{
               height: 40,
               width: 40,
-              ml: 1
+              ml: 1,
+              mt: 2
             }}
             src="/static/images/avatars/avatar_1.png"
           >
-            <UserCircleIcon fontSize="small" />
+            <UserCircleIcon fontSize="Large" />
           </Avatar>
         </Toolbar>
       </DashboardNavbarRoot>
