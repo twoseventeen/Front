@@ -1,8 +1,11 @@
 import Head from 'next/head';
 import { Box, Container, Typography } from '@mui/material';
 import { DashboardLayout } from '../components/dashboard-layout';
-import { SettingsNotifications } from '../components/settings/settings-notifications';
 import { SettingsPassword } from '../components/settings/settings-password';
+import { AppAppBar } from '../components/appappbar';
+
+
+
 
 const Settings = () => (
   <>
@@ -11,33 +14,36 @@ const Settings = () => (
         Settings | Material Kit
       </title>
     </Head>
+
     <Box
       component="main"
       sx={{
         flexGrow: 1,
-        py: 8
+        py: 4
       }}
     >
-      <Container maxWidth="lg">
-        <Typography
-          sx={{ mb: 3 }}
-          variant="h4"
-        >
-          Settings
+      <Container maxWidth="sm">
+        <Typography variant="h5" gutterBottom marked="center" align="left">
+          비밀번호 재설정
         </Typography>
-        <SettingsNotifications />
-        <Box sx={{ pt: 3 }}>
-          <SettingsPassword />
-        </Box>
+        <Typography variant="body3" align="left">
+          {"비밀번호를 변경해 주세요."}
+        </Typography>
+      </Container>
+      <Container maxWidth="sm">
+
+        <SettingsPassword />
+
+
       </Container>
     </Box>
   </>
 );
 
 Settings.getLayout = (page) => (
-  <DashboardLayout>
+  <AppAppBar>
     {page}
-  </DashboardLayout>
+  </AppAppBar>
 );
 
 export default Settings;
