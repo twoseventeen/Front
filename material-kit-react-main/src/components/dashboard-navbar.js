@@ -120,7 +120,7 @@ export const DashboardNavbar = (props) => {
               <Link
                 variant="button"
                 color="text.primary"
-                href="#"
+                href="/card"
                 underline="none"
                 sx={{ my: 1, mx: 1.5 }}
               >
