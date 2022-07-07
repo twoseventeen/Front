@@ -92,7 +92,6 @@ const colorTool = createTheme({
         },
         secondary: {
             main: '#5a8100',
-
         },
     }
 });

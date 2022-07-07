@@ -24,11 +24,7 @@
     "@mui/material": "^5.0.6",
     "@mui/styles": "^5.0.2",
     "axios": "^0.27.2",
-<<<<<<< HEAD
     "chart.js": "^3.8.0",
-=======
-    "chart.js": "^3.5.1",
->>>>>>> 0d7d10a9a3f5496edbd202e1c8c532577c99e092
     "date-fns": "^2.25.0",
     "formik": "^2.1.5",
     "google-news-json": "^2.1.0",
