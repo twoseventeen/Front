@@ -92,40 +92,49 @@ export const DashboardNavbar = (props) => {
                   mr: 3
                 }}
               >
-                Lowbot
+                Lawbot
               </Link>
             </NextLink>
 
-
-
             <nav>
               <Link
-                variant="button"
+                variant="h6"
                 color="text.primary"
                 href="#"
                 underline="none"
-                sx={{ my: 1, mx: 1.5 }}
-              >커뮤니티
+                sx={{ my: 1, mx: 4 }}
+              >법령사전
 
               </Link>
               <Link
-                variant="button"
+                variant="h6"
                 color="text.primary"
                 href="#"
                 underline="none"
-                sx={{ my: 1, mx: 1.5 }}
-              >
-                실태조사
-              </Link>
-              <Link
-                variant="button"
-                color="text.primary"
-                href="#"
-                underline="none"
-                sx={{ my: 1, mx: 1.5 }}
+                sx={{ my: 1, mx: 4 }}
               >
                 카드뉴스
               </Link>
+              <Link
+                variant="h6"
+                color="text.primary"
+                href="/wordcloud"
+                underline="none"
+                sx={{ my: 1, mx: 4 }}
+              >
+                법령 클라우드
+              </Link>
+
+              <Link
+                variant="h6"
+                color="text.primary"
+                href="/chart"
+                underline="none"
+                sx={{ my: 1, mx: 4 }}
+              >실태조사
+
+              </Link>
+
             </nav>
             <Button href="/login" color="secondary" sx={{ my: 1, mx: 1.5 }}>로그인</Button>
             <Button href="/register" color="secondary" variant="contained" sx={{ my: 1, mx: 0 }}>

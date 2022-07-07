@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
+import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -13,15 +14,15 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { AppAppBar } from '../components/appappbar';
+import { DashboardLayout } from '../components/dashboard-layout';
+
 
 const Register = () => {
+
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
       id: '',
-      nickname: '',
       passwrod: '',
       name: '',
       email: ''
@@ -33,11 +34,6 @@ const Register = () => {
         .max(255)
         .required(
           '아이디를 입력해주세요.'),
-      nickname: Yup
-        .string()
-        .max(255)
-        .required(
-          '사용할 닉네임을 입력해주세요'),
       password: Yup
         .string()
         .max(255)
@@ -57,19 +53,20 @@ const Register = () => {
         .max(255)
         .email('올바른 이메일 형식을 입력해주세요.')
         .required(
-          '이메일을 입력해주세요.'),
+          '이메일을 입력해주세요.')
 
-      policy: Yup
-        .boolean()
-        .oneOf(
-          [true],
-          'This field must be checked'
-        )
+      // policy: Yup
+      //   .boolean()
+      //   .oneOf(
+      //     [true],
+      //     'This field must be checked'
+      //   )
     }),
     onSubmit: () => {
       router.push('/');
     }
   });
+
 
   return (
     <>
@@ -105,14 +102,7 @@ const Register = () => {
                 >
                   Lawbot
                 </Typography>
-                {/* <Typography
-                  color="secondary"
-                  gutterBottom
-                  variant="body2"
-                >
-                </Typography> */}
               </Box>
-
               <TextField
                 error={Boolean(formik.touched.id && formik.errors.id)}
                 fullWidth
@@ -123,19 +113,6 @@ const Register = () => {
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 value={formik.values.id}
-                variant="outlined"
-                size="normal"
-              />
-              <TextField
-                error={Boolean(formik.touched.nickname && formik.errors.nickname)}
-                fullWidth
-                helperText={formik.touched.nickname && formik.errors.nickname}
-                label="닉네임"
-                margin="dense"
-                name="nickname"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.nickname}
                 variant="outlined"
                 size="normal"
               />
@@ -163,7 +140,7 @@ const Register = () => {
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 type="password"
-                value={formik.values.password2}
+                value={formik.values.confirmpassword}
                 variant="outlined"
                 size="normal"
               />
@@ -274,9 +251,9 @@ const Register = () => {
 };
 
 Register.getLayout = (page) => (
-  <AppAppBar>
+  <DashboardLayout>
     {page}
-  </AppAppBar>
+  </DashboardLayout>
 );
 
 

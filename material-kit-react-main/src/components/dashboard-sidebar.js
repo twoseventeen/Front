@@ -93,7 +93,7 @@
 //         <div>
 //           <Box sx={{ p: 3 }}>
 //             <NextLink
-//               href="/"
+//               href="/
 //               passHref
 //             >
 //               <a>

@@ -68,8 +68,7 @@ material-kit-react
 	├── utils
 	└── pages
 		├── 404.js
-		├── chatbot.js
-				├── chatbot-layout.js
+		├── chart.js
 		├── _app.js
 		├── _document.js
 		├── account.js
@@ -79,6 +78,7 @@ material-kit-react
 		├── FindPassword.js
 		├── products.js
 		├── register.js
+		├── wordcloud.js
 		└── settings.js
 ```
 

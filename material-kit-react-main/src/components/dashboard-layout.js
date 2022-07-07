@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { DashboardNavbar } from './dashboard-navbar';
+import { DashboardAppbar } from './dashboardAppbar';
 
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
@@ -23,7 +23,7 @@ export const DashboardLayout = (props) => {
 
   return (
     <>
-      <DashboardLayoutRoot>
+      {/* <DashboardLayoutRoot>
         <Box
           sx={{
             display: 'flex',
@@ -36,9 +36,10 @@ export const DashboardLayout = (props) => {
           {children}
         </Box>
 
-      </DashboardLayoutRoot>
-      <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
+      </DashboardLayoutRoot> */}
+      <DashboardAppbar anchorEl={() => setSidebarOpen(true)} />
 
+      {children}
 
       {/* <DashboardSidebar
         onClose={() => setSidebarOpen(false)}

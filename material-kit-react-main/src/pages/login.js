@@ -11,7 +11,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Facebook as FacebookIcon } from '../icons/facebook';
 // import { Google as GoogleIcon } from '../icons/google';
-import { AppAppBar } from '../components/appappbar';
+import { DashboardLayout } from '../components/dashboard-layout';
 
 const Login = () => {
   const router = useRouter();
@@ -67,7 +67,7 @@ const Login = () => {
         }}
       >
         <Container maxWidth="xs">
-          <NextLink
+          {/* <NextLink
             href="/"
             passHref
           >
@@ -78,12 +78,11 @@ const Login = () => {
             >
               메인화면으로 돌아가기
             </Button>
-          </NextLink>
+          </NextLink> */}
 
           <form onSubmit={formik.handleSubmit}>
             <Box sx={{
               my: 5,
-              marginTop: 5,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center'
@@ -256,9 +255,8 @@ const Login = () => {
 };
 
 Login.getLayout = (page) => (
-  <AppAppBar>
+  <DashboardLayout>
     {page}
-  </AppAppBar>
+  </DashboardLayout>
 );
-
 export default Login;
