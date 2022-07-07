@@ -15,28 +15,6 @@ import { DashboardLayout } from '../components/dashboard-layout';
 
 const Login = () => {
   const router = useRouter();
-  const formik = useFormik({
-    initialValues: {
-      id: '',
-      password: ''
-    },
-    validationSchema: Yup.object({
-      id: Yup
-        .string()
-        .max(255)
-        .required(
-          '아이디를 입력해주세요.'),
-      password: Yup
-        .string()
-        .max(255)
-        .required(
-          '비밀번호를 입력해주세요.')
-    }),
-    onSubmit: () => {
-      router.push('/');
-    }
-  });
-
   const theme = createTheme({
     palette: {
       primary: {

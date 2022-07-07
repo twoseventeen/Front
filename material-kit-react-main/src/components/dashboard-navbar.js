@@ -111,7 +111,20 @@ export const DashboardNavbar = (props) => {
                 color="text.primary"
                 href="#"
                 underline="none"
+<<<<<<< HEAD
                 sx={{ my: 1, mx: 4 }}
+=======
+                sx={{ my: 1, mx: 1.5 }}
+              >
+                실태조사
+              </Link>
+              <Link
+                variant="button"
+                color="text.primary"
+                href="/card"
+                underline="none"
+                sx={{ my: 1, mx: 1.5 }}
+>>>>>>> 0d7d10a9a3f5496edbd202e1c8c532577c99e092
               >
                 카드뉴스
               </Link>
